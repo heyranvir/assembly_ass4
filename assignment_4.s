@@ -11,24 +11,21 @@ _start:
     LDR R7, = gradeb //This will save the address of gradeb constant into resister 7 
     LDR R8, = gradec //This will save the address of gradec constant into resister 8 
 
-    MOV R1, #gradea    // Load the value of gradea into R1
-    CMP R5, R1         // Compare R5 with the value store in R1
-    BGE prnta       // moving to prnta if the value of R5 is greater than R1
+    CMP R5, #gradea         // Compare R5 with grade a
+    BGE prnta       // moving to prnta if the value of R5 is greater than gradea
 
-    MOV R1, #gradeb    // Load 75 into R1 (B grade lower boundary)
-    CMP R5, R1         // Compare R5 with value store in R1
-    BGE prntb       // moving to prntb if value of R5 is grater than R1
+    CMP R5, #gradeb         // Compare R5 with grade b
+    BGE prntb       // moving to prntb if value of R5 is grater than gradeb
 
-    MOV R1, #gradec    // Load 50 into R1 (C grade lower boundary)
-    CMP R5, R1         // Compare R5 with value store in R1
-    BGE prntc        // Branch to prntc if value of R5 is grater than R1
+    CMP R5, #gradec         // Compare R5 with grade c
+    BGE prntc        // moving to prntc if value of R5 is grater than gradec
 
     // If the grade is 0 or less the printing grade F 
     b prntf
 
 prnta:
     // Print "Congratulations! You got an A."
-    ADD R1, R1, #0
+    //ADD R1, R1, #0
     MOV R7, #4 // Syscall code for write
     SWI 0
 
